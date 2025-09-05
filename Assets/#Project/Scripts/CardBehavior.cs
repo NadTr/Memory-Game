@@ -14,15 +14,19 @@ public class CardBehavior : MonoBehaviour
 
     void OnMouseEnter()
     {
-        Debug.Log("Enter");
+        // Debug.Log("Enter");
         memoScale = transform.localScale;
         scaleOnFocus = transform.localScale * SCALE;
         transform.localScale = scaleOnFocus;
     }
     void OnMouseExit()
     {
-        Debug.Log("Exit");
+        // Debug.Log("Exit");
         transform.localScale = memoScale;
+    }
+    void OnMouseDown()
+    {        
+        ChangeColor(color);
     }
     public void Initialize(Color color, int indexColor, CardsManager manager)
     {
@@ -30,8 +34,8 @@ public class CardBehavior : MonoBehaviour
         this.indexColor = indexColor;
         this.manager = manager;
 
-        ChangeColor(color);
-        
+        // ChangeColor(color);
+
     }
     public void ChangeColor(Color color)
     {
