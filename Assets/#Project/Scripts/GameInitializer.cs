@@ -7,10 +7,7 @@ public class GameInitializer : MonoBehaviour
     const float CARD_SIZE = 1.0f;
     [SerializeField] private int rows = 2;
     [SerializeField] private int columns = 3;
-    // [SerializeField] private float gapRow = 1.3f;
-    // [SerializeField] private float gapColumn = 1.5f;
     [SerializeField] private float gap = .5f;
-    // [SerializeField] private GameObject cardPrefab;
     [SerializeField] private CardBehavior cardPrefab;
     private List<CardBehavior> deck = new();
     [SerializeField] private Color[] colors;

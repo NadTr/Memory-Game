@@ -28,14 +28,13 @@ public class CardBehavior : MonoBehaviour
     {        
         ChangeColor(color);
     }
+
     public void Initialize(Color color, int indexColor, CardsManager manager)
     {
         this.color = color;
         this.indexColor = indexColor;
         this.manager = manager;
-
-        // ChangeColor(color);
-
+        Debug.Log(indexColor);
     }
     public void ChangeColor(Color color)
     {
