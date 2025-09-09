@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CardsManager : MonoBehaviour
 {
+    [SerializeField] private float delayBeforeFaceDown = 1f;
     List<CardBehavior> deck;
     Color[] colors;
     private CardBehavior cardMemorized = null;
@@ -39,7 +40,11 @@ public class CardsManager : MonoBehaviour
     public void CardIsClicked(CardBehavior card)
     {
         //tout les réactions des cartes face visibles
-        if (!card.IsFaceUp)
+        if (card.IsFaceUp)
+        {
+            return;
+        }
+        else
         {
             card.FaceUp();
 
@@ -53,8 +58,8 @@ public class CardsManager : MonoBehaviour
                 }
                 else
                 {
-                    card.FaceDown();
-                    cardMemorized.FaceDown();
+                    card.FaceDown(delayBeforeFaceDown);
+                    cardMemorized.FaceDown(delayBeforeFaceDown);
                     Debug.Log("Cartes différentes, réessayez");
                 }
                 cardMemorized = null;
@@ -63,8 +68,6 @@ public class CardsManager : MonoBehaviour
             {
                 cardMemorized = card;
             }
-        }
-        
-
+        }        
     }
 }

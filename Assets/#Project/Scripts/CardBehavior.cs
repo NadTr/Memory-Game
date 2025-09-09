@@ -8,7 +8,7 @@ public class CardBehavior : MonoBehaviour
     // [SerializeField] private Vector3 scaleOnFocus = Vector3.one * 1.2f;
     const float SCALE = 1.2f;
     [SerializeField] private Vector3 scaleOnFocus;
-    [SerializeField] private float changeColorTime = 1f;
+    [SerializeField] private float changeColorTime = .5f;
     private Vector3 memoScale;
     private Color color;
     [SerializeField] private Color baseColor = Color.gray;
@@ -54,10 +54,10 @@ public class CardBehavior : MonoBehaviour
         StartCoroutine(ChangeColorwithLerp(color));
         IsFaceUp = true;
     }
-    public void FaceDown()
+    public void FaceDown(float delay = 0f)
     {
         // ChangeColor(baseColor);
-        StartCoroutine(ChangeColorwithLerp(baseColor));
+        StartCoroutine(ChangeColorwithLerp(baseColor, delay));
         IsFaceUp = false;
     }
     public void Won()
@@ -68,8 +68,9 @@ public class CardBehavior : MonoBehaviour
 
     }
 
-    private IEnumerator ChangeColorwithLerp(Color color)
+    private IEnumerator ChangeColorwithLerp(Color color, float delay = 0f)
     {
+        yield return new WaitForSeconds(delay);
         float chrono = 0f;
         Color startColor = GetComponent<Renderer>().material.color;
 
