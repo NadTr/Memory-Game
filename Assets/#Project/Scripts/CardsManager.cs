@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class CardsManager : MonoBehaviour
 {
     List<CardBehavior> deck;
     Color[] colors;
+    private CardBehavior cardMemorized = null;
     public void Initialize(List<CardBehavior> deck, Color[] colors)
     {
         this.deck = deck;
@@ -40,11 +42,29 @@ public class CardsManager : MonoBehaviour
         if (!card.IsFaceUp)
         {
             card.FaceUp();
+
+            if (cardMemorized != null)
+            {
+                if (cardMemorized.IndexColor == card.IndexColor)
+                {
+                    card.Won();
+                    cardMemorized.Won();
+                    Debug.Log("Bravo, Ce sont les mêmes");
+                }
+                else
+                {
+                    card.FaceDown();
+                    cardMemorized.FaceDown();
+                    Debug.Log("Cartes différentes, réessayez");
+                }
+                cardMemorized = null;
+            }
+            else
+            {
+                cardMemorized = card;
+            }
         }
-        else
-        {
-            card.FaceDown();
-        }
+        
 
     }
 }

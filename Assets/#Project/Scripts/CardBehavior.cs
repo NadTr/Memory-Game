@@ -12,9 +12,9 @@ public class CardBehavior : MonoBehaviour
     private Vector3 memoScale;
     private Color color;
     [SerializeField] private Color baseColor = Color.gray;
-    private int indexColor;
+    public int IndexColor{ get; private set; }
     private CardsManager manager;
-    [field: SerializeField] public bool IsFaceUp { get; private set; }
+    public bool IsFaceUp { get; private set; }
 
     void OnMouseEnter()
     {
@@ -38,7 +38,7 @@ public class CardBehavior : MonoBehaviour
     public void Initialize(Color color, int indexColor, CardsManager manager)
     {
         this.color = color;
-        this.indexColor = indexColor;
+        this.IndexColor = indexColor;
         this.manager = manager;
         ChangeColor(baseColor);
         IsFaceUp = false;
@@ -59,6 +59,13 @@ public class CardBehavior : MonoBehaviour
         // ChangeColor(baseColor);
         StartCoroutine(ChangeColorwithLerp(baseColor));
         IsFaceUp = false;
+    }
+    public void Won()
+    {
+        // ChangeColor(baseColor);
+        // GetComponent<Renderer>.destroy();
+        IsFaceUp = true;
+
     }
 
     private IEnumerator ChangeColorwithLerp(Color color)
