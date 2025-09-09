@@ -205,8 +205,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5574356, y: -0.0057296813, z: 0.0038486195, w: -0.8301915}
-  m_LocalPosition: {x: 0.6255682, y: 3.080095, z: 0.941715}
+  m_LocalRotation: {x: -0.67081606, y: -0.0006687377, z: 0.0006058238, w: -0.7416233}
+  m_LocalPosition: {x: 1.2426143, y: 5.1292214, z: 3.5888968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,11 +440,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: rows
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: columns
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: cardPrefab
@@ -452,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 8600412154890897663, guid: 676105c524e66a040bab23219dd0c8be, type: 3}
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: colors.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: colors.Array.data[0].b
@@ -561,6 +561,18 @@ PrefabInstance:
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: colors.Array.data[8].r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
+      propertyPath: colors.Array.data[9].b
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
+      propertyPath: colors.Array.data[9].g
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
+      propertyPath: colors.Array.data[9].r
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 3704131434116586816, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: m_Name

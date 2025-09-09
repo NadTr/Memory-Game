@@ -1,17 +1,21 @@
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CardsManager : MonoBehaviour
 {
     [SerializeField] private float delayBeforeFaceDown = 1f;
+    // [SerializeField] private string Victory;
     List<CardBehavior> deck;
     Color[] colors;
     private CardBehavior cardMemorized = null;
+    private int cardsWon = 0;
     public void Initialize(List<CardBehavior> deck, Color[] colors)
     {
         this.deck = deck;
         this.colors = colors;
+        cardsWon = 0;
 
         int colorIndex;
         int cardIndex;
@@ -54,13 +58,20 @@ public class CardsManager : MonoBehaviour
                 {
                     card.Won();
                     cardMemorized.Won();
-                    Debug.Log("Bravo, Ce sont les mêmes");
+                    cardsWon += 2;
+                    Debug.Log($"Cartes gagnées : {cardsWon}");
+
+                    if (cardsWon >= deck.Count)
+                    {
+                        Debug.Log("Victoire");
+                        Invoke("Victory", 2f);
+                    }
+
                 }
                 else
                 {
                     card.FaceDown(delayBeforeFaceDown);
                     cardMemorized.FaceDown(delayBeforeFaceDown);
-                    Debug.Log("Cartes différentes, réessayez");
                 }
                 cardMemorized = null;
             }
@@ -68,6 +79,10 @@ public class CardsManager : MonoBehaviour
             {
                 cardMemorized = card;
             }
-        }        
+        }
+    }
+    public void Victory()
+    {
+        SceneManager.LoadScene("Victory");
     }
 }

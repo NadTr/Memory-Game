@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 public class GameInitializer : MonoBehaviour
 {
     const float CARD_SIZE = 1.0f;
-    [SerializeField] private int rows = 2;
-    [SerializeField] private int columns = 3;
+    [SerializeField] private int rows = 3;
+    [SerializeField] private int columns = 4;
     [SerializeField] private float gap = .5f;
     [SerializeField] private CardBehavior cardPrefab;
     private List<CardBehavior> deck = new();
