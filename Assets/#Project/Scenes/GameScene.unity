@@ -440,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: rows
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1205709156360527836, guid: 24c125d6972c0b4428e51bd75223958c, type: 3}
       propertyPath: columns
