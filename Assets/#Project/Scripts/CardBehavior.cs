@@ -50,15 +50,30 @@ public class CardBehavior : MonoBehaviour
 
     public void FaceUp()
     {
-        ChangeColor(color);
+        // ChangeColor(color);
+        StartCoroutine(ChangeColorwithLerp(color));
         IsFaceUp = true;
     }
     public void FaceDown()
     {
-        ChangeColor(baseColor);
+        // ChangeColor(baseColor);
+        StartCoroutine(ChangeColorwithLerp(baseColor));
         IsFaceUp = false;
     }
 
+    private IEnumerator ChangeColorwithLerp(Color color)
+    {
+        float chrono = 0f;
+        Color startColor = GetComponent<Renderer>().material.color;
 
+        while (chrono < changeColorTime)
+        {
+            chrono += Time.deltaTime;
+            ChangeColor(Color.Lerp(startColor, color, chrono / changeColorTime));
+            yield return new WaitForEndOfFrame();
+            // yield return null;
+        }
+        ChangeColor(color);
+    }
 
 }
