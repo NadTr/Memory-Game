@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleOnFocus: {x: 1.2, y: 1.2, z: 1.2}
+  baseColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}

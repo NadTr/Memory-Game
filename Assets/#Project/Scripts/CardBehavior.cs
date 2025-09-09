@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,10 +8,13 @@ public class CardBehavior : MonoBehaviour
     // [SerializeField] private Vector3 scaleOnFocus = Vector3.one * 1.2f;
     const float SCALE = 1.2f;
     [SerializeField] private Vector3 scaleOnFocus;
+    [SerializeField] private float changeColorTime = 1f;
     private Vector3 memoScale;
     private Color color;
+    [SerializeField] private Color baseColor = Color.gray;
     private int indexColor;
     private CardsManager manager;
+    [field: SerializeField] public bool IsFaceUp { get; private set; }
 
     void OnMouseEnter()
     {
@@ -25,8 +29,10 @@ public class CardBehavior : MonoBehaviour
         transform.localScale = memoScale;
     }
     void OnMouseDown()
-    {        
-        ChangeColor(color);
+    {
+        // Debug.Log("click");
+        manager.CardIsClicked(this);
+
     }
 
     public void Initialize(Color color, int indexColor, CardsManager manager)
@@ -34,11 +40,25 @@ public class CardBehavior : MonoBehaviour
         this.color = color;
         this.indexColor = indexColor;
         this.manager = manager;
-        Debug.Log(indexColor);
+        ChangeColor(baseColor);
+        IsFaceUp = false;
     }
-    public void ChangeColor(Color color)
+    private void ChangeColor(Color color)
     {
         GetComponent<Renderer>().material.color = color;
     }
+
+    public void FaceUp()
+    {
+        ChangeColor(color);
+        IsFaceUp = true;
+    }
+    public void FaceDown()
+    {
+        ChangeColor(baseColor);
+        IsFaceUp = false;
+    }
+
+
 
 }
