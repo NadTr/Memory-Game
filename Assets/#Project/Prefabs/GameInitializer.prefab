@@ -57,3 +57,4 @@ MonoBehaviour:
   - {r: 0.0047169924, g: 0.91422176, b: 1, a: 0}
   - {r: 1, g: 0.9534342, b: 0.0039215684, a: 0}
   cardsManager: {fileID: 708228108088969233, guid: 20d3f18d18c0e3046876e9f0045e5f0a, type: 3}
+  victoryManager: {fileID: 1587629561229590532, guid: 746cbb9a0ff15c944b5cac0ef6fba3bf, type: 3}

@@ -9,12 +9,14 @@ public class CardsManager : MonoBehaviour
     // [SerializeField] private string Victory;
     List<CardBehavior> deck;
     Color[] colors;
+    VictoryManager victoryManager;
     private CardBehavior cardMemorized = null;
     private int cardsWon = 0;
-    public void Initialize(List<CardBehavior> deck, Color[] colors)
+    public void Initialize(List<CardBehavior> deck, Color[] colors, VictoryManager vm)
     {
         this.deck = deck;
         this.colors = colors;
+        this.victoryManager = vm;
         cardsWon = 0;
 
         int colorIndex;
@@ -59,12 +61,12 @@ public class CardsManager : MonoBehaviour
                     card.Won();
                     cardMemorized.Won();
                     cardsWon += 2;
-                    Debug.Log($"Cartes gagnées : {cardsWon}");
+                    // Debug.Log($"Cartes gagnées : {cardsWon}");
 
                     if (cardsWon >= deck.Count)
                     {
-                        Debug.Log("Victoire");
-                        Invoke("Victory", 2f);
+                        victoryManager.ShowVictoryScene();
+
                     }
 
                 }
@@ -80,9 +82,5 @@ public class CardsManager : MonoBehaviour
                 cardMemorized = card;
             }
         }
-    }
-    public void Victory()
-    {
-        SceneManager.LoadScene("Victory");
     }
 }

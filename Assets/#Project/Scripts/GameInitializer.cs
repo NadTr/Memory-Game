@@ -12,6 +12,7 @@ public class GameInitializer : MonoBehaviour
     private List<CardBehavior> deck = new();
     [SerializeField] private Color[] colors;
     [SerializeField] private CardsManager cardsManager;
+    [SerializeField] private VictoryManager victoryManager;
 
 
     private void Start()
@@ -46,6 +47,6 @@ public class GameInitializer : MonoBehaviour
     }
     private void ObjectInitialization()
     {
-        cardsManager.Initialize(deck, colors);
+        cardsManager.Initialize(deck, colors, victoryManager);
     }
 }
