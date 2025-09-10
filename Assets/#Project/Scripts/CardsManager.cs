@@ -9,14 +9,14 @@ public class CardsManager : MonoBehaviour
     // [SerializeField] private string Victory;
     List<CardBehavior> deck;
     Color[] colors;
-    VictoryManager victoryManager;
+    private VictoryManager victoryManager;
     private CardBehavior cardMemorized = null;
     private int cardsWon = 0;
-    public void Initialize(List<CardBehavior> deck, Color[] colors, VictoryManager vm)
+    public void Initialize(List<CardBehavior> deck, Color[] colors, VictoryManager victoryManager)
     {
         this.deck = deck;
         this.colors = colors;
-        this.victoryManager = vm;
+        this.victoryManager = victoryManager;
         cardsWon = 0;
 
         int colorIndex;
@@ -40,12 +40,10 @@ public class CardsManager : MonoBehaviour
                 cards[cardIndex].Initialize(colors[colorIndex], colorIndex, this);
                 cards.RemoveAt(cardIndex);
             }
-
         }
     }
     public void CardIsClicked(CardBehavior card)
     {
-        //tout les réactions des cartes face visibles
         if (card.IsFaceUp)
         {
             return;
@@ -61,14 +59,12 @@ public class CardsManager : MonoBehaviour
                     card.Won();
                     cardMemorized.Won();
                     cardsWon += 2;
-                    // Debug.Log($"Cartes gagnées : {cardsWon}");
 
                     if (cardsWon >= deck.Count)
                     {
-                        victoryManager.ShowVictoryScene();
+                        victoryManager.LaunchVictory();
 
                     }
-
                 }
                 else
                 {

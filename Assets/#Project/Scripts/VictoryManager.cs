@@ -1,18 +1,29 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
 
 public class VictoryManager : MonoBehaviour
 {
-    [SerializeField] private float delayToVictoryScene = 2f;
-    public void ShowVictoryScene()
+    [SerializeField] private float delayBeforeLoadingScene = 2f;
+    private string sceneName;
+
+    public void Initialize(string sceneName)
     {
-        Invoke("Victory", delayToVictoryScene);
+        this.sceneName = sceneName.Trim();
     }
-    public void Victory()
+    
+    public void LaunchVictory()
     {
-        SceneManager.LoadScene("Victory");
-        // Debug.Log("Victoire");
+        StartCoroutine(CO_LaunchVictory());
     }
 
+    private IEnumerator CO_LaunchVictory()
+    {
+        yield return new WaitForSeconds(delayBeforeLoadingScene);
+        SceneManager.LoadScene(sceneName);
+
+
+    }
 }

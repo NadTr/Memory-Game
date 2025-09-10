@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 public class GameInitializer : MonoBehaviour
 {
     const float CARD_SIZE = 1.0f;
+    [Header("Cards")]
+    [Space]
     [SerializeField] private int rows = 3;
     [SerializeField] private int columns = 4;
     [SerializeField] private float gap = .5f;
@@ -12,8 +14,11 @@ public class GameInitializer : MonoBehaviour
     private List<CardBehavior> deck = new();
     [SerializeField] private Color[] colors;
     [SerializeField] private CardsManager cardsManager;
-    [SerializeField] private VictoryManager victoryManager;
 
+    [Header("Victory")]
+    [Space]
+    [SerializeField] private VictoryManager victoryManager;
+    [SerializeField] private string VictoryScene;
 
     private void Start()
     {
@@ -27,9 +32,9 @@ public class GameInitializer : MonoBehaviour
             Debug.LogError("Not enough colors to fill all the cards");
             return;
         }
+
         ObjectCreation();
         ObjectInitialization();
-
     }
 
     private void ObjectCreation()
@@ -43,10 +48,14 @@ public class GameInitializer : MonoBehaviour
                 deck.Add(Instantiate(cardPrefab, position, Quaternion.identity));
             }
         }
+
         cardsManager = Instantiate(cardsManager);
+        victoryManager = Instantiate(victoryManager);
     }
+
     private void ObjectInitialization()
     {
         cardsManager.Initialize(deck, colors, victoryManager);
+        victoryManager.Initialize(VictoryScene);
     }
 }
